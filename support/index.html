@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Forms - ChitterSync</title>
+    <link rel="stylesheet" href="/styles/support.css"> <!-- Link to global styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome -->
+</head>
+<body>
+    <header>
+        
+        <h1><i class="fa-regular fa-circle-question"></i><br>How Can We Help You?</h1>
+        <p>Find answers, get assistance, or contact our team</p>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="/"><i class="fas fa-home"></i> Home</a> > 
+        <span><i class="fas fa-life-ring"></i> Support</span>
+    </nav>
+
+    <div class="search-section">
+        <input type="text" id="search-input" placeholder="Search for help topics..." oninput="performSearch()" />
+        <select id="search-type" onchange="performSearch()">
+            <option value="relevance">Relevance</option>
+            <option value="exact">Exact Match</option>
+            <option value="contains">Contains</option>
+        </select>
+        <p id="result-count"></p>
+        <div id="loading-spinner" style="display: none; color: #00b7c3;">Loading...</div>
+        <button id="login-button">Log In</button>
+    </div>
+    <section class="categories">
+        <div class="category" data-name="Account & Profile Manage your account, subscriptions, and more." href="forms/accountandprofile/">
+            <h3>Account & Profile</h3>
+            <p>Manage your account, subscriptions, and more.</p>
+        </div>
+        <div class="category" data-name="Dashboard & Widgets Customize and optimize your dashboard experience.">
+            <h3>Dashboard & Widgets</h3>
+            <p>Customize and optimize your dashboard experience.</p>
+        </div>
+        <div class="category" data-name="Content Creation Learn how to upload and manage your creations.">
+            <h3>Content Creation</h3>
+            <p>Learn how to upload and manage your creations.</p>
+        </div>
+        <div class="category" data-name="Sub-Services Learn More On What Each Sub-Service Is. ChitterSync Gia CommunityForged VeloSync ChitterHaven ThreadLine EchoDrive PreCorded">
+            <h3>Sub-Services</h3>
+            <p>Learn More On What Each Sub-Service Is.</p>
+        </div>
+        <div class="category" data-name="Marketplace Buy, sell, and manage items in the marketplace.">
+            <h3>Marketplace</h3>
+            <p>Buy, sell, and manage items in the marketplace.</p>
+        </div>
+        <div class="category" data-name="CommunityForged Migrate servers and manage your community effectively.">
+            <h3>CommunityForged</h3>
+            <p>Migrate servers and manage your community effectively. (can also be found in "Sub-Services")</p>
+        </div>
+        <div class="category" data-name="Security & Privacy Understand our security measures and privacy policies.">
+            <h3>Security & Privacy</h3>
+            <p>Understand our security measures and privacy policies.</p>
+        </div>
+        <div class="category" data-name="Technical Support">
+            <h3>Technical Support</h3>
+            <p>Get help with technical issues and troubleshooting.</p>
+        </div>
+        <div class="category" data-name="Billing & Payments Manage your billing information and payment methods.">
+            <h3>Billing & Payments</h3>
+            <p>Manage your billing information and payment methods.</p>
+        </div>
+        <div class="category" data-name="Feedback & Suggestions">
+            <h3>Feedback & Suggestions</h3>
+            <p>Share your thoughts and suggestions with us.</p>
+        </div>
+        <div class="category" data-name="Legal & Compliance">
+            <h3>Legal & Compliance</h3>
+            <p>Understand our terms of service and compliance policies.</p>
+        </div>
+        <div class="category" data-name="API & Integrations Learn about our API and how to integrate with other services.">
+            <h3>API & Integrations</h3>
+            <p>Learn about our API and how to integrate with other services.</p>
+        </div>
+        <div class="category" data-name="ChitterSync Learn more about ChitterSync and its features.">
+            <h3>ChitterSync</h3>
+            <p>Learn more about ChitterSync and its features. (can also be found in "Sub-Services")</p>
+        </div>
+        <div class="category" data-name="ChitterSync Addons Learn how to use addons with ChitterSync to improve your experience.">
+            <h3>ChitterSync Addons</h3>
+            <p>Learn how to use addons with ChitterSync to improve your experience.</p>
+        </div>
+        <div class="category" data-name="ChitterSync Dev Tools Explore Dev Tools and how they work.">
+            <h3>ChitterSync Dev Tools</h3>
+            <p>Explore Dev Tools and how they work.</p>
+        </div>
+        <div class="category" data-name="ChitterHaven Learn more about ChitterHaven and its features.">
+            <h3>ChitterHaven</h3>
+            <p>Learn more about ChitterHaven and its features. (can also be found in "Sub-Services")</p>
+        </div>
+        <div class="category" data-name="ThreadLine Learn more about ThreadLine and its features.">
+            <h3>ThreadLine</h3>
+            <p>Learn more about ThreadLine and its features. (can also be found in "Sub-Services")</p>
+        </div>
+        <div class="category" data-name="Storage Management Learn how we handle storage to manage your storage effectively.">
+            <h3>Storage Management</h3>
+            <p>Learn how we handle storage and how to manage your storage effectively.</p>
+    </section>
+
+    <section class="faq-section">
+        <h2>Popular FAQs</h2>
+        <div class="faq" data-name="How do I reset my password?">
+            <p><strong>How do I reset my password?</strong></p>
+            <p>Go to your account settings and click "Reset Password."</p>
+        </div>
+        <div class="faq" data-name="What are the upload limits? Free users can upload up to 250MB on EchoDrive, with higher tiers allowing more.">
+            <p><strong>What are the upload limits?</strong></p>
+            <p>Free users can upload up to 250MB on EchoDrive, with higher tiers allowing more.</p>
+        </div>
+        <div class="faq" data-name="How can I migrate my community to CommunityForge? Follow our step-by-step migration guide available here.">
+            <p><strong>How can I migrate my community to CommunityForge?</strong></p>
+            <p>Follow our step-by-step migration guide available <a href="account-and-profile/communityforged-connections/guide/">here</a>.</p>
+            <br><p>Do you find any of these FAQ's helpful?</p>
+            <div class="feedback">
+                <button>Yes</button>
+                <button>No</button>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="related-articles">
+        <h3>Related Articles</h3>
+        <ul>
+            <li><a href="/article/1">How to set up your account</a></li>
+            <li><a href="/article/2">Troubleshooting login issues</a></li>
+        </ul>
+    </div>
+
+    <div class="contact-section">
+        <h2>Need More Help?</h2>
+        <p>Contact our support team via <a href="mailto:support@chittersync.com">email</a> or start a <a href="contact/chat">live chat</a>.</p>
+    </div>
+
+    <footer>
+        &copy; 2025 Reach Studios/Reach Studios New York. All rights reserved.
+    </footer>
+
+    <script>
+        function performSearch() {
+            document.getElementById('loading-spinner').style.display = 'block';
+            setTimeout(() => {
+                const query = document.getElementById('search-input').value.toLowerCase();
+                const searchType = document.getElementById('search-type').value;
+                const categories = document.querySelectorAll('.category');
+                const faqs = document.querySelectorAll('.faq');
+                let matchCount = 0; // Initialize the match counter
+
+                // Helper function to calculate relevance score
+                function calculateRelevance(name, query) {
+                    if (!query) return 0; // No query, no relevance
+                    let score = 0;
+
+                    // Exact match gets the highest score
+                    if (name === query) score += 10;
+
+                    // Partial match in the title gets a medium score
+                    if (name.includes(query)) score += 5;
+
+                    // Match at the beginning of the string gets a bonus
+                    if (name.startsWith(query)) score += 3;
+
+                    return score;
+                }
+
+                // Helper function to highlight the search term
+                function highlightText(element, query) {
+                    const text = element.textContent; // Get the original text
+                    const regex = new RegExp(`(${query})`, 'gi'); // Create a case-insensitive regex for the query
+                    const highlightedText = text.replace(regex, '<mark>$1</mark>'); // Wrap the matching term in <mark>
+                    element.innerHTML = highlightedText; // Update the element's HTML
+                }
+
+                // If the query is empty, show all categories and FAQs
+                if (!query) {
+                    categories.forEach(category => {
+                        category.style.display = 'block'; // Show all categories
+                        const title = category.querySelector('h3');
+                        const description = category.querySelector('p');
+                        title.innerHTML = title.textContent; // Reset title
+                        description.innerHTML = description.textContent; // Reset description
+                    });
+
+                    faqs.forEach(faq => {
+                        faq.style.display = 'block'; // Show all FAQs
+                        const question = faq.querySelector('p strong');
+                        const answer = faq.querySelector('p:not(:first-child)');
+                        question.innerHTML = question.textContent; // Reset question
+                        answer.innerHTML = answer.textContent; // Reset answer
+                    });
+
+                    // Clear the result count
+                    document.getElementById('result-count').textContent = '';
+                    document.getElementById('loading-spinner').style.display = 'none';
+                    return; // Exit the function early
+                }
+
+                // Array to store matches with relevance scores
+                const matches = [];
+
+                // Filter and calculate relevance for categories
+                categories.forEach(category => {
+                    const name = category.getAttribute('data-name').toLowerCase();
+                    const title = category.querySelector('h3');
+                    const description = category.querySelector('p');
+
+                    const relevance = calculateRelevance(name, query);
+                    if (relevance > 0) {
+                        matches.push({ element: category, relevance });
+                        matchCount++;
+                        highlightText(title, query); // Highlight in the title
+                        highlightText(description, query); // Highlight in the description
+                    } else {
+                        category.style.display = 'none';
+                    }
+                });
+
+                // Filter and calculate relevance for FAQs
+                faqs.forEach(faq => {
+                    const name = faq.getAttribute('data-name').toLowerCase();
+                    const question = faq.querySelector('p strong');
+                    const answer = faq.querySelector('p:not(:first-child)');
+
+                    const relevance = calculateRelevance(name, query);
+                    if (relevance > 0) {
+                        matches.push({ element: faq, relevance });
+                        matchCount++;
+                        highlightText(question, query); // Highlight in the question
+                        highlightText(answer, query); // Highlight in the answer
+                    } else {
+                        faq.style.display = 'none';
+                    }
+                });
+
+                // Sort matches by relevance
+                matches.sort((a, b) => b.relevance - a.relevance);
+
+                // Display matches in order of relevance
+                matches.forEach(match => {
+                    match.element.style.display = 'block';
+                });
+
+                // Display the match count
+                const resultCountElement = document.getElementById('result-count');
+                resultCountElement.textContent = `${matchCount} result(s) found`;
+
+                // Log the search query and results count
+                logSearch(query, matchCount);
+                document.getElementById('loading-spinner').style.display = 'none';
+            }, 500);
+        }
+
+        function logSearch(query, resultsCount) {
+            fetch('/log-search', {
+                method: 'POST',
+                body: JSON.stringify({ query, resultsCount }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
+
+        function showSuggestions(query) {
+            const suggestions = [];
+            categories.forEach(category => {
+                const name = category.getAttribute('data-name').toLowerCase();
+                if (name.includes(query)) {
+                    suggestions.push(category.querySelector('h3').textContent);
+                }
+            });
+            // Display suggestions in a dropdown below the search bar
+        }
+
+        document.querySelectorAll('.faq').forEach(faq => {
+            faq.querySelector('p').addEventListener('click', () => {
+                const answer = faq.querySelector('p:not(:first-child)');
+                answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+
+        document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        function paginateFAQs(page, itemsPerPage) {
+            const faqs = document.querySelectorAll('.faq');
+            faqs.forEach((faq, index) => {
+                faq.style.display = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) ? 'block' : 'none';
+            });
+        }
+        document.querySelectorAll('.category').forEach(category => {
+            const href = category.getAttribute('href');
+            if (href) {
+                category.addEventListener('click', () => {
+                    window.location.href = href;
+                });
+                category.style.cursor = 'pointer';
+            }
+        });
+        fetch('/get-faqs')
+            .then(response => response.json())
+            .then(data => {
+                // Populate FAQ section with data
+            });
+
+        const translations = {
+            en: {
+                headerTitle: "How Can We Help You?",
+                headerSubtitle: "Find answers, get assistance, or contact our team",
+                categories: {
+                    account: "Account & Profile",
+                    accountDesc: "Manage your account, subscriptions, and more.",
+                    dashboard: "Dashboard & Widgets",
+                    dashboardDesc: "Customize and optimize your dashboard experience."
+                }
+            },
+            es: {
+                headerTitle: "¿Cómo podemos ayudarte?",
+                headerSubtitle: "Encuentra respuestas, obtén ayuda o contacta a nuestro equipo",
+                categories: {
+                    account: "Cuenta y Perfil",
+                    accountDesc: "Administra tu cuenta, suscripciones y más.",
+                    dashboard: "Tablero y Widgets",
+                    dashboardDesc: "Personaliza y optimiza tu experiencia en el tablero."
+                }
+            },
+            fr: {
+                headerTitle: "Comment pouvons-nous vous aider ?",
+                headerSubtitle: "Trouvez des réponses, obtenez de l'aide ou contactez notre équipe",
+                categories: {
+                    account: "Compte et Profil",
+                    accountDesc: "Gérez votre compte, vos abonnements et plus encore.",
+                    dashboard: "Tableau de bord et Widgets",
+                    dashboardDesc: "Personnalisez et optimisez votre expérience du tableau de bord."
+                }
+            }
+        };
+
+        function changeLanguage() {
+            const selectedLanguage = document.getElementById("language-select").value;
+            const translation = translations[selectedLanguage];
+
+            // Update header
+            document.getElementById("header-title").textContent = translation.headerTitle;
+            document.getElementById("header-subtitle").textContent = translation.headerSubtitle;
+
+            // Update categories
+            document.querySelector("#category-account h3").textContent = translation.categories.account;
+            document.querySelector("#category-account p").textContent = translation.categories.accountDesc;
+            document.querySelector("#category-dashboard h3").textContent = translation.categories.dashboard;
+            document.querySelector("#category-dashboard p").textContent = translation.categories.dashboardDesc;
+        }
+    </script>
+</body>
+</html>

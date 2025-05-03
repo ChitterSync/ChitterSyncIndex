@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloSync - Game Server Hosting</title>
+    <style>
+        /* General Reset */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: #2c2c2c; /* Dark grey background */
+    color: #f4f4f4; /* Light text color */
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ffffff; /* White text */
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Sections */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: #1a1a1a; /* Black card background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark theme */
+    animation: slideIn 0.8s ease-in-out;
+}
+
+section h2, section h3 {
+    margin-bottom: 15px;
+    color: #bb00ff; /* Gold for headings */
+    border-bottom: 2px solid #444; /* Subtle border */
+    padding-bottom: 5px;
+}
+
+section p {
+    margin-bottom: 20px;
+    color: #959595; /* Slightly lighter text for paragraphs */
+    font-style: light;
+}
+
+/* Lists */
+ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    color: #f4f4f4; /* Light text */
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #444; /* Darker border for table */
+}
+
+table th {
+    background: #333; /* Dark grey for table headers */
+    color: #bb00ff; /* Gold text for headers */
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background: #1a1a1a; /* Black for even rows */
+}
+
+table tr:hover {
+    background: #444; /* Dark grey hover effect */
+    transition: background 0.3s ease;
+}
+
+/* Scrollable Table Wrapper */
+.table-wrapper {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin-bottom: 20px;
+}
+
+.table-wrapper table {
+    min-width: 600px; /* Ensure table doesn't shrink too much */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    background: #1a1a1a; /* Black footer background */
+    color: #f4f4f4; /* Light text */
+    border-radius: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+footer a {
+    color: #bb00ff; /* Gold links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff; /* White on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Buttons (Optional for Future Use) */
+button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+    transition: 0.3s ease;
+    scale: 1.05em;
+    
+}
+
+button:active {
+    background: #004494;
+    transition: 0.3s ease;
+    scale: 0.95em;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form label {
+    font-weight: bold;
+    color: #bb00ff; /* Gold for labels */
+}
+form input, form textarea, form select {
+    padding: 10px;
+    border: 1px solid #444; /* Darker border for inputs */
+    border-radius: 5px;
+    background: #333; /* Dark grey for inputs */
+    color: #f4f4f4; /* Light text */
+}
+form input:focus, form textarea:focus, form select:focus {
+    outline: none;
+    border-color: #bb00ff; /* Gold border on focus */
+    box-shadow: 0 0 5px rgba(187, 0, 255, 0.5); /* Gold shadow on focus */
+}
+form button {
+    background: #bb00ff; /* Gold button */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+form button:hover {
+    background: #ffffff; /* White on hover */
+    color: #bb00ff; /* Gold text on hover */
+    transition: 0.3s ease;
+    scale: 1.05em;
+}
+form button:active {
+    background: #bb00ff; /* Gold on active */
+    color: #fff;
+    transition: 0.3s ease;
+    scale: 0.95em;
+}
+form button:disabled {
+    background: #555; /* Grey for disabled */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+form button:disabled:hover {
+    background: #555; /* No hover effect for disabled */
+    color: #fff;
+}
+form button:disabled:active {
+    background: #555; /* No active effect for disabled */
+    color: #fff;
+}
+form button:disabled:focus {
+    outline: none;
+    box-shadow: none; /* No shadow for disabled */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    table th, table td {
+        font-size: 0.9rem;
+    }
+}
+</style>
+<link href="navbar.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>VeloSync - Game Server Hosting</h1>
+        <h2>By ChitterSync</h2>
+    </header>
+    <section>
+        <h2>Overview</h2>
+        <p>
+            VeloSync is a game server hosting service focused on providing 
+            <strong>high-quality, flexible, and cost-effective</strong> game server solutions. 
+            Initially supporting <strong>Minecraft</strong> and <strong>Terraria</strong>, the service plans to expand into a variety of other popular multiplayer games.
+        </p>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Key Features</h2>
+        <ul>
+            <li><strong>Flexible Pricing</strong>: Based on <strong>RAM usage</strong> and <strong>tokens</strong>. Servers are charged <strong>per hour</strong> of RAM usage.</li>
+            <li>
+                <strong>Subscription Tiers</strong>:
+                <ul>
+                    <li><strong>ChitterSyncronixer</strong>: Earn <strong>2,500 VeloSync tokens per month</strong> which stacks over time or <strong>2 24/7 Servers</strong> and <strong>1 24/7 Proxy server</strong> included with the subscription plan.</li>
+                    <li>Example cost: <strong>6GB RAM server</strong> = <strong>6 tokens per hour</strong>.</li>
+                </ul>
+            </li>
+            <li><strong>Game Server Support</strong>: Starting with Minecraft and expanding to other games.</li>
+            <li><strong>User Control</strong>: Users can configure servers easily through a <strong>web interface</strong> or <strong>API</strong>.</li>
+            <li><strong>Custom Server Options</strong>: Ability to install mods, plugins, and additional game-specific customizations.</li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Server Pricing Models</h2>
+        <h3>Token Method</h3>
+        <p>
+            This method is made for Pay-to-play Servers for servers that only need to be online when people are playing. 
+            Consider Subscription-based if you want a server always online or has a lot of activity.
+        </p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Server RAM + Shared CPU Cores</th>
+                    <th>Price (per hour)</th>
+                    <th>Estimated Monthly Cost if always online</th>
+                    <th>Tokens per Month from CSX Plan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 GB + 0.5 Shared CPU Cores (for proxy servers)</td>
+                    <td>0.5 tokens</td>
+                    <td>$5 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>2GB + 1 CPU (Min for Lighter Games)</td>
+                    <td>1 token</td>
+                    <td>$10 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>4GB (Base Min Rec.)</td>
+                    <td>2 tokens</td>
+                    <td>$20 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>6GB (Rec.)</td>
+                    <td>3 tokens</td>
+                    <td>$30 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>12GB</td>
+                    <td>6 tokens</td>
+                    <td>$60 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>16GB (Rec. Max)</td>
+                    <td>8 tokens</td>
+                    <td>$80 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>32GB + 16 Shared CPU Cores</td>
+                    <td>32 tokens</td>
+                    <td>$320 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>64GB + 32 Shared CPU Cores</td>
+                    <td>64 tokens</td>
+                    <td>$640 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+                <tr>
+                    <td>128GB (Potentially overkill but we offer it)</td>
+                    <td>128 tokens</td>
+                    <td>$1280 (approx.)</td>
+                    <td>2,500</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Q&A</h4>
+        <ul>
+            <li><strong>Q: Do servers that are offline use tokens?</strong><br>A: <strong>No</strong>, they only use tokens when online, and by default are set to turn off after 5 minutes of no players being online.</li>
+            <li><strong>Q: Why any higher than 16 GBs are twice the tokens?</strong><br>A: <strong>We use cloud-hosting services</strong> like AWS for servers that are 16 GBs or lower to save on server costs, but <strong>we also have our own servers</strong> that can handle up to 256 GBs, and <strong>they cost more to run</strong>.</li>
+            <li><strong>Q: What if my server is booted online by someone?</strong><br>A: <strong>You still get charged</strong> for those. To prevent this, only allow whitelisted users to join by selecting whitelist in <code>can start by joining</code> if the game is supported or completely allow no one by turning the feature off (it's off by default).</li>
+            <li><strong>Q: Can I turn off or change the timer for auto-stop for my server?</strong><br>A: Yes, you can by navigating to <code>Server Settings > Automation > autostop server after &lt;number&gt; &lt;Seconds|Minutes&gt; > Toggle</code> and modifying the number value or toggling it off (default is 5 minutes, toggled on). This is made to save you tokens as not having this could cost too much.</li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>Subscription Method</h3>
+        <p>
+            This is made for servers that are meant to be always online, like proxy servers or minigame server lobbies for Minecraft or Terraria. 
+            Consider the Tokenized Method for servers that aren’t as popular. See example pricing below:
+        </p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Server RAM</th>
+                    <th>Price (per month/year)</th>
+                    <th>CSX Discount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 GB + 0.5 Shared CPU Cores (for proxy servers)</td>
+                    <td>$0.49/M or $4.99/Y (Save $1.98)</td>
+                    <td>Included up to 1, 50%</td>
+                </tr>
+                <tr>
+                    <td>2 GB + 1 Shared CPU Cores (Min for most servers)</td>
+                    <td>$0.99/M or $9.99/Y (Save $2.98)</td>
+                    <td>Included 2 2-6 GB Servers For Most Games, 50%</td>
+                </tr>
+                <tr>
+                    <td>4 GB + 2 Shared CPU Cores</td>
+                    <td>$1.99/M or $19.99/Y (Save $3.98)</td>
+                    <td>Included 2 2-6 GB Servers For Most Games, 50%</td>
+                </tr>
+                <tr>
+                    <td>6 GB + 3 Shared CPU Cores</td>
+                    <td>$2.99/M or $29.99/Y (Save $5.98)</td>
+                    <td>Included 2 2-6 GB Servers For Most Games, 50%</td>
+                </tr>
+                <tr>
+                    <td>8 GB + 4 Shared CPU Cores</td>
+                    <td>$3.99/M or $39.99/Y (Save $7.98)</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>10 GB + 5 Shared CPU Cores</td>
+                    <td>$4.99/M or $49.99/Y (Save $9.98)</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>12 GB + 6 Shared CPU Cores</td>
+                    <td>$5.99/M or $59.99/Y (Save $11.98)</td>
+                    <td>50%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            You can buy up to 256 GB RAM + 128 Shared CPU Cores per month. Contact support for anything higher for pricing and availability.
+        </p>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Supported Games (Current and Future)</h2>
+        <h3>Top Games</h3>
+        <ul>
+            <li><strong>Minecraft</strong>: Fully supported with <strong><i class="fa-solid fa-mug-hot">Java</i>/Bedrock cross-play</strong> via <strong>GeyserMC</strong>. Mods, datapacks, and custom plugins supported.</li>
+            <li><strong>Barotrauma</strong>: Partially supported with <i class="fab fa-steam fa-lg"></i> <strong>Steam</strong>. Workshop supported.</li>
+            <li><strong>Terraria</strong>: Fully supported with <strong>Steam</strong>. <i class="fa-solid fa-wrench fa-lg"></i> <strong>tModLoader</strong> supported.</li>
+        </ul>
+
+        <div class="table-wrapper">
+            <h3>Game Support</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Game</th>
+                        <th>Platform(s)</th>
+                        <th>Support Type</th>
+                        <th>Estimated Availability</th>
+                        <th>Mod/Plugin Support</th>
+                        <th>Modding Methods</th>
+                        <th>Free Hosting Available?</th>
+                        <th>Notes</th>
+                        <th>Client Modifications?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Minecraft</td>
+                        <td><i class="fab fa-playstation fa-lg">PSN</i> (Bedrock) <i class="fab fa-xbox fa-lg">Xbox</i> (Bedrock) <i class="fa-solid fa-window-restore fa-lg">Minecraft Launcher</i> <i class="fa-solid fa-shuffle fa-lg">Cross-play</i> (GeyserMC Required)</td>
+                        <td><i class="fa-solid fa-server fa-lg"></i>Dedicated server hosting</td>
+                        <td></td>
+                        <td>Yes</td>
+                        <td><strong>Java:</strong> Mods (<i>Forge, Fabric), Datapacks <br> <strong>Both:</strong> Plugins (Bukkit, Spigot), Vanilla</td>
+                        <td>No</td>
+                        <td>High CPU/memory usage</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>ARK: Survival Evolved</td>
+                        <td><i class="fab fa-playstation fa-lg">PSN</i> <i class="fab fa-xbox fa-lg">Xbox</i> <i class="fab fa-steam fa-lg">Steam</i> <i class="fa-solid fa-gamepad fa-lg">Epic Games</i> <i class="fa-duotone fa-solid fa-shuffle fa-lg">Cross-play</i></td>
+                        <td><i class="fa-solid fa-server fa-lg"></i>Dedicated server hosting</td>
+                        <td>Q2 2027</td>
+                        <td>Yes</td>
+                        <td>Mods (Steam Workshop), Custom Maps</td>
+                        <td>No</td>
+                        <td>High CPU/memory usage</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Rust</td>
+                        <td></td>
+                        <td>Dedicated server hosting</td>
+                        <td>Q4 2027</td>
+                        <td>Yes</td>
+                        <td>Mods (uMod), Server Plugins</td>
+                        <td>Yes</td>
+                        <td>Popular modding support</td>
+                    </tr>
+                    <tr>
+                        <td>Valheim</td>
+                        <td>Dedicated server hosting</td>
+                        <td>2028</td>
+                        <td>Yes</td>
+                        <td>Mods (Valheim Plus, BepInEx)</td>
+                        <td>Yes</td>
+                        <td>Mod-friendly survival game</td>
+                    </tr>
+
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+        <p>
+            Note: The above table is a sample and can be expanded with more games and details as needed.
+            The availability dates are estimates and may change based on development progress and demand.
+        </p>
+        <p>
+            If you have a specific game in mind, please let us know!
+        </p>
+        <i class="fab fa-playstation fa-lg"></i>
+        <i class="fab fa-xbox"></i>
+        <i class="fab fa-steam fa-lg"></i>
+        </section>
+
+        <section>
+            <h2>Server Hosting Options</h2>
+            <p>
+                VeloSync offers a variety of server hosting options to suit your needs. 
+                Whether you need a dedicated server for a single game or multiple servers for different games, we have you covered.
+                Our servers are hosted on high-performance hardware with low latency connections to ensure a smooth gaming experience.
+            </p>
+            <p>
+                We also offer a range of server management tools to help you configure and manage your servers easily. 
+                Our user-friendly web interface allows you to start, stop, and configure your servers with just a few clicks.
+                Additionally, our API allows for advanced users to automate server management tasks and integrate with other services.
+            </p>
+        </section>
+        <footer>
+        <p>For more information, visit our website at <a href="https://www.velosync.com">www.velosync.com</a> or <a href="https://velosync.chittersync.com/">velosync.chittersync.com</a>.</p>
+    </footer>
+</body>
+</html>

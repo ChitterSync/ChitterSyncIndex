@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Options</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #4e54c8, #8f94fb);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Container styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        /* Box styling */
+        .item {
+            position: relative; /* Ensures tooltip is positioned relative to this container */
+        }
+
+        .box {
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button styling */
+        .box button {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #fff;
+            color: #4e54c8;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .box button:hover {
+            background-color: #4e54c8;
+            color: #fff;
+        }
+
+        /* Tooltip styling */
+        .tooltip {
+            position: absolute;
+            top: 100%; /* Position tooltip below the box */
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 10px;
+            width: 200px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .item:hover .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .box {
+                width: 150px;
+                height: 150px;
+            }
+
+            .box button {
+                font-size: 1rem;
+            }
+
+            .tooltip {
+                width: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Options</h1>
+    <div class="container">
+        <div class="item">
+            <div class="box">
+                <button onclick="location.href='home/gia/create/label-creator'">Label</button>
+            </div>
+            <div class="tooltip">
+                Create a central profile for all of your content. Subscribe to ChitterSyncronizer to have more than one.
+            </div>
+        </div>
+        <div class="item">
+            <div class="box">
+                <button onclick="location.href='series-editor'">Series</button>
+            </div>
+            <div class="tooltip">
+                Create a new series for comics, videos, or movies.
+            </div>
+        </div>
+        <div class="item">
+            <div class="box">
+                <button onclick="location.href='album-editor'">Album</button>
+            </div>
+            <div class="tooltip">
+                Create an album and add your musical creations to the album.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

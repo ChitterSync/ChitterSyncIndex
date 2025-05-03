@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Post on ChitterSync</title>
+    <style>
+        body {
+            background-color: #000; /* Black background */
+            color: #bdbdbd; /* Light gray text */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        h1, h2 {
+            color: #ffffff; /* Pure white for headings */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        ul {
+            margin: 10px 0 20px 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        a {
+            color: #6dd1d6; /* Light green links */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How to Post on ChitterSync</h1>
+        <p>To post on ChitterSync, you first need to have an account.</p>
+
+        <h2>Step 1: Create an Account</h2>
+        <p>
+            - If you don’t already have an account, click the <strong>"Sign Up"</strong> button in the top right corner of the page.  
+            - Follow the instructions to set up your account.
+        </p>
+
+        <h2>Step 2: Log In</h2>
+        <p>
+            - Once your account is created, click the <strong>"Log In"</strong> button in the top right corner and enter your credentials.
+        </p>
+
+        <h2>Step 3: Create a Post</h2>
+        <p>
+            - After logging in, click the <strong>"New Post"</strong> button at the top right of the page.  
+            - Enter the <strong>title</strong> and <strong>content</strong> of your post.  
+            - Click the <strong>"Post"</strong> button to publish it.
+        </p>
+
+        <h2>Commenting on Posts</h2>
+        <p>
+            - To engage with others, you can comment on their posts.  
+            - Click the <strong>"Comment"</strong> button below the post, type your comment in the text box, and click <strong>"Post"</strong> to submit it.
+        </p>
+
+        <h2>Need Help?</h2>
+        <p>
+            - If you have any questions or need assistance, click the <strong>"Contact Us"</strong> button. You can find it by clicking your profile picture in the navigation bar.
+        </p>
+    </div>
+</body>
+</html>
+
+ <a href="/support" class="back-button">Back to Support</a>
+
+ <script>
+     const collapsibles = document.querySelectorAll(".collapsible");
+     collapsibles.forEach(button => {
+         button.addEventListener("click", function () {
+             this.classList.toggle("active");
+             const content = this.nextElementSibling;
+             if (content.style.display === "block") {
+                 content.style.display = "none";
+             } else {
+                 content.style.display = "block";
+             }
+         });
+     });
+ </script>
+</body>
+</html>

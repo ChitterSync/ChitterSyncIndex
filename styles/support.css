@@ -1,0 +1,235 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+}
+
+header {
+    background-color: #00b7c3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.breadcrumb {
+    margin: 10px 20px;
+    color: #00b7c3;
+}
+
+.breadcrumb a {
+    color: #00b7c3;
+    text-decoration: none;
+}
+
+.breadcrumb a i {
+    margin-right: 3px;
+}
+
+.breadcrumb span {
+    color: white;
+}
+
+/* Language Selector */
+.language-selector {
+    text-align: right;
+    margin: 10px 20px;
+}
+
+.language-selector select {
+    padding: 5px;
+    border: 1px solid #00b7c3;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+}
+
+/* Search Section */
+.search-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-section input {
+            width: 80%;
+            max-width: 600px;
+    padding: 10px;
+    border: 1px solid #00b7c3;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    margin: 5px;
+}
+
+.search-section #result-count {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #00b7c3;
+    margin-top: 10px;
+}
+
+.search-section button {
+    background-color: #00b7c3;
+    cursor: pointer;
+}
+
+.search-section button:hover {
+    background-color: #008a96;
+}
+
+/* Categories Section */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 10px;
+}
+
+.category {
+    background-color: #1a1a1a;
+    border: 1px solid #00b7c3;
+    border-radius: 5px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.category h3 {
+    margin-top: 0;
+    color: #00b7c3;
+}
+
+.category p {
+    margin: 10px 0;
+}
+
+/* FAQ Section */
+.faq-section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.faq-section h2 {
+    color: #00b7c3;
+}
+
+.faq {
+    margin: 10px 0;
+    border-bottom: 1px solid #00b7c3;
+    padding-bottom: 10px;
+}
+
+.faq p {
+    margin: 5px 0;
+}
+
+.faq .feedback {
+    margin-top: 10px;
+}
+
+.faq .feedback button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00b7c3;
+    color: white;
+    cursor: pointer;
+}
+
+.faq .feedback button:hover {
+    background-color: #008a96;
+}
+
+.faq h3 i {
+    color: #00b7c3;
+}
+
+/* Related Articles Section */
+.related-articles {
+    margin: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.related-articles h3 {
+    color: #00b7c3;
+}
+
+.related-articles ul {
+    list-style: none;
+    padding: 0;
+}
+
+.related-articles li {
+    margin: 5px 0;
+}
+
+.related-articles a {
+    color: #00b7c3;
+    text-decoration: none;
+}
+
+.related-articles a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+    margin: 30px 10px;
+    padding: 20px;
+    background-color: #00b7c3;
+    color: white;
+    border-radius: 5px;
+}
+
+.contact-section a {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Highlighting */
+mark {
+    background-color: #00b7c3;
+    color: white;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .categories {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category {
+        width: 90%;
+    }
+}
+
+.fas {
+    margin-right: 5px;
+    color: #00b7c3;
+}

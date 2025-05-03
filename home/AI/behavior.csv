@@ -1,0 +1,2 @@
+comparison, prompt, action, response, ai, Quick Response
+starts with (case insensitive), "reset", "reitorate request", "what do you want to reset?","random", "()[{}]"

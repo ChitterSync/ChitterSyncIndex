@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #bdbdbd;
+            text-align: center;
+            padding: 50px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: #bdbdbd;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content button {
+            background-color: #444;
+            color: #bdbdbd;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Gia</h1>
+    <p>Loading your account...</p>
+
+    <!-- Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <h2>Authentication Required</h2>
+            <p>You need to sign in or sign up to access all features. Or, you can continue as a guest with limited access.</p>
+            <button id="signinBtn">Sign In</button>
+            <button id="signupBtn">Sign Up</button>
+            <button id="guestBtn">Continue as Guest</button>
+        </div>
+    </div>
+
+    <script>
+        // Simulated function to check if the user has a ChitterSync account
+        async function checkChitterSyncAccount() {
+            try {
+                const response = await fetch('/api/check-auth', {
+                    method: 'GET',
+                    credentials: 'include', // Ensures cookies/session data are sent
+                });
+
+                const result = await response.json();
+
+                if (!result.isAuthenticated) {
+                    // Show modal if the user is not authenticated
+                    document.getElementById('authModal').style.display = 'flex';
+                } else {
+                    document.querySelector("p").innerText = "Welcome back to Gia!";
+                }
+            } catch (error) {
+                console.error("Error checking authentication:", error);
+                alert("There was an issue verifying your account. Please try again later.");
+            }
+        }
+
+        // Event listeners for modal buttons
+        document.getElementById('signinBtn').addEventListener('click', () => {
+            window.location.href = "/signin"; // Redirect to sign-in page
+        });
+
+        document.getElementById('signupBtn').addEventListener('click', () => {
+            window.location.href = "/signup"; // Redirect to sign-up page
+        });
+
+        document.getElementById('guestBtn').addEventListener('click', () => {
+            document.getElementById('authModal').style.display = 'none';
+            document.querySelector("p").innerText = "Welcome to Gia as a guest!";
+        });
+
+        // Run the check when the page loads
+        checkChitterSyncAccount();
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | ChitterSync - Chitter Your Way</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Link to CSS styles -->
+    <link rel="stylesheet" href="/themes/cs/global.css">
+
+    <!-- Load scripts -->
+    <script src="/basic.gv.js" async></script>
+    <script src="/regionbased.js" async></script>
+    <script src="/home/client-theme.js" async></script>
+    <script src="check-login.js" defer></script>
+</head>
+<body>
+    <noscript>
+        <p style="color: red;">JavaScript is required to view this page properly. Please enable it in your browser settings.</p>
+    </noscript>
+
+    <!-- Loading Indicator -->
+    <div id="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <main style="display: none;">
+        <!-- Welcome Message -->
+        <section id="welcome-section">
+            <h1 id="welcomeUser">Welcome, User!</h1>
+        </section>
+
+        <!-- Storage Progress Bars -->
+        <section id="storage-section">
+            <h2>Storage Usage</h2>
+            <div class="storage-bar">
+                <label for="echodrive">EchoDrive:</label>
+                <progress id="echodrive" value="50" max="100"></progress>
+                <span>50% used</span>
+            </div>
+            <div class="storage-bar">
+                <label for="velosync">VeloSync:</label>
+                <progress id="velosync" value="30" max="100"></progress>
+                <span>30% used</span>
+            </div>
+            <div class="storage-bar">
+                <label for="precorded">Precorded:</label>
+                <progress id="precorded" value="70" max="100"></progress>
+                <span>70% used</span>
+            </div>
+        </section>
+
+        <!-- Central Hub -->
+        <section id="hub-section">
+            <h2>Central Hub</h2>
+            <div class="hub-buttons">
+                <button onclick="navigateTo('gia')">Gia</button>
+                <button onclick="navigateTo('chitterhaven')">ChitterHaven</button>
+                <button onclick="navigateTo('threadline')">ThreadLine</button>
+                <button onclick="navigateTo('others')">Other Services</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Example navigation function
+        function navigateTo(service) {
+            alert(`Navigating to ${service}...`);
+            // Replace with actual navigation logic
+        }
+
+        // Show the main content and hide the loading indicator once the page is fully loaded
+        window.onload = function() {
+            document.getElementById('loading-indicator').style.display = 'none';
+            document.querySelector('main').style.display = 'block';
+
+            if (typeof updateTheme === 'function') {
+                updateTheme(); // Call updateTheme from theme.js
+            }
+            if (typeof initializeRegion === 'function') {
+                initializeRegion(); // Call initializeRegion from regionbased.js
+            }
+        }
+    </script>
+</body>
+</html>

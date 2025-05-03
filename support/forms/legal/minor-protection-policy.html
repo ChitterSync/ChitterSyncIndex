@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Protection Policy</title>
+    <style>
+        body {
+            background-color: #000; /* Black background */
+            color: #bdbdbd; /* Light gray text */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        h1, h2 {
+            color: #ffffff; /* Pure white for headings */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .collapsible {
+            background-color: #333;
+            color: #bdbdbd;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .collapsible:hover {
+            background-color: #444;
+        }
+        .content {
+            display: none;
+            padding: 0 15px;
+            margin-top: 10px;
+            border-left: 2px solid #4caaaf;
+            border-radius: 4px;
+        }
+        a {
+            color: #6dd1d6; /* Light green links */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            margin: 10px 0 20px 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caaaf;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .back-button:hover {
+            background-color: #4caaaf;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Child Protection Policy</h1>
+        <button class="collapsible">1. Purpose</button>
+        <div class="content">
+            <p>Gia is committed to providing a safe and inclusive platform for all users, including children and young people. This policy outlines the measures taken to protect children from harm, exploitation, and inappropriate content while engaging with Gia’s services.</p>
+        </div>
+        
+        <button class="collapsible">2. Scope</button>
+        <div class="content">
+            <p>This policy applies to all Gia staff, content creators, users, and third-party partners. It is designed to meet global standards for child protection and adheres to relevant legal and regulatory requirements.</p>
+        </div>
+        
+        <button class="collapsible">3. Definitions</button>
+        <div class="content">
+            <ul>
+                <li><strong>Child:</strong> Any individual under the age of 18.</li>
+                <li><strong>Harm:</strong> Any form of physical, emotional, or psychological abuse, neglect, exploitation, or exposure to inappropriate content.</li>
+            </ul>
+        </div>
+        
+        <button class="collapsible">4. Guiding Principles</button>
+        <div class="content">
+            <ul>
+                <li>The welfare of children is paramount.</li>
+                <li>All children have equal rights to protection, regardless of age, gender, ethnicity, disability, or background.</li>
+                <li>Preventative measures are better than reactive responses.</li>
+                <li>Collaboration with legal authorities and child protection organizations will be prioritized when necessary.</li>
+            </ul>
+        </div>
+        
+        <!-- Additional sections following the same format -->
+
+        <h2>Contact Information</h2>
+        <p>For questions, concerns, or to report an issue, please contact Gia’s Child Protection Officer at <a href="mailto:contact@gia.com">contact@gia.com</a>.</p>
+    </div>
+
+    <a href="/support" class="back-button">Back to Support</a>
+
+    <script>
+        const collapsibles = document.querySelectorAll(".collapsible");
+        collapsibles.forEach(button => {
+            button.addEventListener("click", function () {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

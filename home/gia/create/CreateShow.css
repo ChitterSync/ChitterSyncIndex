@@ -1,0 +1,205 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #6a11cb, #2575fc);
+    animation: backgroundAnimation 15s infinite ease-in-out;
+    background-size: 400% 400%;
+    background-attachment: fixed; /* Make the background static */
+    background-position: center;
+}
+
+@keyframes backgroundAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 800px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #ffed00;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"], textarea, select, input[type="file"] {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus, textarea:focus, select:focus {
+    border-color: #ffed00;
+    outline: none;
+}
+
+.episode-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.episode, .season {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2575fc;
+    background-color: #ffed00;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #ffbb00;
+}
+
+input[type="submit"] {
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4e54c8;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #3d45c8;
+}
+
+.link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.link a {
+    color: #ffed00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+.delete-btn {
+    color: #fff;
+    background-color: red;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background-color: #d9534f;
+}
+
+.add-episode-btn {
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-episode-btn:hover {
+    background-color: #218838;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 500px;
+}
+
+.modal-content h2 {
+    color: #ffed00;
+    margin-bottom: 20px;
+}
+
+.modal input[type="file"], .modal input[type="text"], .modal textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.modal .close-btn {
+    background-color: red;
+    color: white;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.modal .close-btn:hover {
+    background-color: #d9534f;
+}

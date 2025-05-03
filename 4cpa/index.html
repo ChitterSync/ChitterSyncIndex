@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Anarchy</title>
+    <!-- Include HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <!-- Optionally include a CSS framework like Bootstrap or custom styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Project Anarchy</h1>
+
+        <!-- Server Status Section -->
+        <div id="server-status">
+            <h3>Server Status:</h3>
+            <p id="status">Loading...</p>
+            <button hx-get="/server-status" hx-target="#status" hx-trigger="load">Check Server Status</button>
+        </div>
+
+        <!-- BlueMap Section -->
+        <div id="bluemap">
+            <h3>BlueMap Display:</h3>
+            <div id="map-container">
+                <!-- The map content will load dynamically here -->
+                <button hx-get="/bluemap" hx-target="#map-container">Load Map</button>
+            </div>
+        </div>
+
+        <!-- Economy Shop Section -->
+        <div id="economy-shop">
+            <h3>Economy Shop</h3>
+            <div id="shop-container">
+                <!-- Items will be loaded dynamically here -->
+                <button hx-get="/shop" hx-target="#shop-container">Load Shop</button>
+            </div>
+        </div>
+
+        <!-- Friendship System Section -->
+        <div id="friendship-system">
+            <h3>Friendship System</h3>
+            <div id="friend-status">
+                <!-- Friend status will load here dynamically -->
+                <button hx-get="/friends-online" hx-target="#friend-status">Check Friend Status</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

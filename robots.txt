@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /support/forms/
+Allow: /agent/home/
+Allow: /robots.txt/
+Disallow: /home

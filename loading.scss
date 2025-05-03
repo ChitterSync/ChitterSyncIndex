@@ -1,0 +1,68 @@
+$ringsize : 300px;
+
+.ring-container {
+  margin:auto;
+  width: $ringsize;
+  height: $ringsize;
+  position: relative;
+  top: 45%;
+  transform: translateY(-45%);
+}
+
+.ring {
+  width: $ringsize;
+  height: $ringsize;
+  border-radius: $ringsize;
+  position: absolute;
+  mix-blend-mode: screen;
+  background: transparent;
+}
+
+.red {
+  border: $ringsize*0.06 solid #d50f1c;
+  animation: redanim linear 6s;
+  animation-iteration-count: infinite;
+}
+.green {
+  border: $ringsize*0.06 solid #009927;
+  animation: greenanim linear 6s;
+  animation-iteration-count: infinite;
+}
+.blue {
+  border: $ringsize*0.06 solid #3569e1;
+  animation: blueanim linear 6s;
+  animation-iteration-count: infinite;
+}
+.yellow {
+  border: $ringsize*0.06 solid #edb40f;
+  animation: yellowanim linear 6s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes redanim{
+  0%   {transform:  rotate(0deg)   scaleX(0.90) scaleY(1.00);}
+  50%  {transform:  rotate(180deg) scaleX(0.90) scaleY(1.00);}
+  100% {transform:  rotate(360deg) scaleX(0.90) scaleY(1.00);}
+}
+
+@keyframes greenanim{
+  0%   {transform:  rotate(31deg)  scaleX(0.90) scaleY(1.00);}
+  25%  {transform:  rotate(121deg) scaleX(1.00) scaleY(0.90);}
+  50%  {transform:  rotate(211deg) scaleX(0.90) scaleY(1.00);}
+  75%  {transform:  rotate(301deg) scaleX(1.00) scaleY(0.90);}
+  100% {transform:  rotate(391deg) scaleX(0.90) scaleY(1.00);}
+}
+
+@keyframes blueanim{
+  0%   {transform:  rotate(413deg) scaleX(0.90) scaleY(1.00);}
+  50%  {transform:  rotate(233deg) scaleX(0.90) scaleY(1.00);}
+  100% {transform:  rotate(53deg)  scaleX(0.90) scaleY(1.00);}
+}
+
+@keyframes yellowanim{
+  0%   {transform:  rotate(472deg) scaleX(0.90) scaleY(1.00);}
+  25%  {transform:  rotate(382deg) scaleX(1.00) scaleY(0.90);}
+  50%  {transform:  rotate(292deg) scaleX(0.90) scaleY(1.00);}
+  75%  {transform:  rotate(202deg) scaleX(1.00) scaleY(0.90);}
+  100% {transform:  rotate(112deg) scaleX(0.90) scaleY(1.00);}
+}

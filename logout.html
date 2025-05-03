@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logout</title>
+  <script>
+    // Automatically log out the user when the page loads
+    async function logout() {
+      const token = getCookie('authToken');
+      if (!token) {
+        // Redirect to signin without any notification
+        window.location.href = '/signin.html';
+        return;
+      }
+
+      try {
+        await fetch('/logout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token }),
+        });
+
+        // Clear the authToken cookie
+        document.cookie = 'authToken=; Max-Age=0; path=/;';
+
+        // Redirect to signin with a loggedOut query parameter
+        window.location.href = '/signin.html?loggedOut=true';
+      } catch (error) {
+        console.error('Error during logout:', error);
+      }
+    }
+
+    // Utility function to get a cookie by name
+    function getCookie(name) {
+      const cookies = document.cookie.split(';');
+      for (const cookie of cookies) {
+        const [key, value] = cookie.trim().split('=');
+        if (key === name) return value;
+      }
+      return null;
+    }
+
+    // Trigger logout on page load
+    window.onload = logout;
+  </script>
+</head>
+<body>
+  <p>Logging you out...</p>
+</body>
+</html>

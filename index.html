@@ -1,0 +1,869 @@
+<!--This is only temperary for until i figure out how to properly format framer without it taking 5k lines of code.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChitterSync</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="basic.gv.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="loading.css">
+    
+    <style>
+        :root {
+            --text-color-dark: #ffffff; /* White for dark backgrounds */
+            --text-color-light: #000000; /* Black for bright backgrounds */
+            --special-font: 'Special Gothic Expanded One'; /* Special Gothic Expanded One */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: var(--text-color-dark); /* Default text color */
+            text-align: center;
+            background-color: black; /* Initial solid color */
+            animation: backgroundColorTransition 1800s ease infinite; /* Smooth and infinite animation */
+            transition: background-color 1s ease, color 1s ease; /* Smooth transition for theme changes */
+            transition: opacity 0.5s ease;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        /* Keyframes for default theme */
+        @keyframes backgroundColorTransition {
+            0% {
+                background-color: rgb(13, 25, 21); /* Start with dark */
+                color: var(--text-color-dark); /* White text */
+            }
+            50% {
+                background-color: aquamarine; /* Transition to light */
+                color: var(--text-color-light); /* Black text */
+            }
+            100% {
+                background-color: rgb(13, 25, 21); /* Return to dark */
+                color: var(--text-color-dark); /* White text */
+            }
+        }
+
+        /* Keyframes for rainbow theme */
+        @keyframes rainbowBackground {
+            0% { background-color: red; }
+            12.5% { background-color: orange; }
+            25% { background-color: yellow; }
+            37.5% { background-color: green; }
+            50% { background-color: blue; }
+            62.5% { background-color: indigo; }
+            75% { background-color: violet; }
+            87.5% { background-color: pink; }
+            100% { background-color: red; } /* Loop back to the first color */
+        }
+
+        header, main, section, footer {
+            padding: 20px;
+        }
+
+        header h1, header p, section h2, section p, footer p {
+            transition: color 0.3s ease; /* Smooth text color transition */
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-family: var(--special-font);
+        }
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+        }
+        main {
+            padding: 50px 20px;
+        }
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .step {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .step h2 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+        }
+        .step p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        .features {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .features h2 {
+            margin: 20px 0;
+            font-size: 2rem;
+        }
+        .features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .features li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            opacity: 0; /* Initially hidden */
+            transform: translateX(-20px); /* Slide in from the left */
+            animation: slide-in 0.5s ease forwards;
+            animation-delay: calc(var(--index) * 0.1s); /* Staggered animation */
+        }
+        .features li:hover {
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transform: scale(1.05); /* Slight zoom effect on hover */
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+        .feature h2 {
+            margin: 20px 0;
+            font-size: 2rem;
+        }
+        .feature ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .feature li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .feature li:hover {
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+
+        section {
+            background: rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Slide up effect */
+            animation: fade-in 1s ease forwards; /* Fade-in animation */
+        }
+        section h2 {
+            margin: 0 0 10px;
+            font-size: 2rem;
+        }
+        section p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+        footer {
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Menu styles */
+        .menu {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .menu select {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .menu button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background: aquamarine;
+            color: black;
+            cursor: pointer;
+        }
+
+        .menu button:hover {
+            background: rgb(13, 25, 21);
+            color: white;
+        }
+
+        /* Apply the font to the loading text */
+        #loading-overlay p {
+            font-family: var(--special-font);
+        }
+
+        /* Button hover animation */
+        button {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Animated Text Styles */
+        .animated-text-container {
+            margin-top: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: aquamarine;
+            font-family: 'Special Elite', cursive;
+        }
+
+        .animated-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid;
+            animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            from,
+            to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: aquamarine;
+            }
+        }
+
+        /* Fade-in animation */
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Slide-in animation for features */
+        @keyframes slide-in {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Loader Styles */
+        .loader .ring::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-top: 3px solid rgba(36, 236, 255, 0.5);
+            border-radius: 50%;
+            animation: animate-trail 2s linear infinite;
+        }
+
+        .loader .ring:nth-child(2)::after {
+            border-top: 3px solid rgba(255, 41, 114, 0.5);
+            animation-duration: 2s;
+            animation-delay: -0.5s;
+        }
+
+        .loader .ring:nth-child(3)::after {
+            border-top: 3px solid rgba(255, 255, 255, 0.5);
+            animation-duration: 2s;
+            animation-delay: -1s;
+        }
+
+        @keyframes animate-trail {
+            0% {
+            transform: rotate(0deg);
+            opacity: 1;
+            }
+            100% {
+            transform: rotate(360deg);
+            opacity: 0;
+            }
+        }
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1; /* Fully visible by default */
+            transition: opacity 0.5s ease; /* Smooth fade-out effect */
+        }
+
+        .loader.hidden {
+            opacity: 0; /* Fully transparent */
+            pointer-events: none; /* Prevent interaction when hidden */
+        }
+
+        .loader .ring {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 3px solid transparent;
+            border-top: 3px solid #24ecff;
+            border-radius: 50%;
+            animation: animate 1s linear infinite;
+        }
+
+        .loader .ring:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            border: 3px solid transparent;
+            border-top: 3px solid #ff2972;
+            animation: animate 1.5s linear infinite;
+            animation-delay: -0.5s;
+        }
+
+        .loader .ring:nth-child(3) {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top: 3px solid #fff;
+            animation: animate 2s linear infinite;
+            animation-delay: -1s;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .tag-list-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh; /* Reduced height for better fit */
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .tag-list {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loop-slider .inner {
+            display: flex;
+            width: fit-content;
+            animation-name: loop;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: var(--direction);
+            animation-duration: var(--duration);
+        }
+
+        .tag {
+            display: flex;
+            align-items: center;
+            gap: 0 0.5rem;
+            color: aquamarine;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2), 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3), 0 0.2rem 1.5rem rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        @keyframes loop {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .chitter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 30px;
+            font-family: var(--special-font, sans-serif);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .chitter-nav.visible {
+            transform: translateY(0);
+        }
+
+        .chitter-nav .logo {
+            font-size: 2rem;
+            color: aquamarine;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .chitter-nav .nav-links {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .chitter-nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            position: relative;
+            white-space: nowrap;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .chitter-nav .nav-links a:hover {
+            background: aquamarine;
+            color: black;
+        }
+
+        .chitter-nav .nav-links a:last-child {
+            margin-left: auto; /* Push the button to the far right */
+            align-self: center; /* Center align the button vertically */
+            background: aquamarine;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center; /* Ensure proper alignment */
+            white-space: nowrap; /* Prevent text wrapping */
+            display: inline-block; /* Ensure it behaves like a button */
+            position: relative; /* Ensure it stays within the navbar */
+        }
+
+        @media (max-width: 768px) {
+            .chitter-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 20px;
+            }
+
+            .chitter-nav .logo {
+                margin-bottom: 10px;
+            }
+
+            .chitter-nav .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+
+            .chitter-nav .nav-links a:last-child {
+                margin-left: 0;
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chitter-nav {
+                padding: 10px;
+            }
+
+            .chitter-nav .logo {
+                font-size: 1.5rem;
+            }
+
+            .chitter-nav .nav-links a {
+                font-size: 1rem;
+                padding: 6px 10px;
+            }
+
+            .chitter-nav .nav-links a:last-child {
+                padding: 6px 12px;
+            }
+        }
+
+        .glass-navbar {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loader">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="chitter-nav glass-navbar hidden" id="sticky-navbar">
+        <a href="" class="logo">ChitterSync</a>
+        <div class="nav-links">
+            <a href="#">Features</a>
+            <a href="wizard">Pricing</a>
+            <a href="support/">Support</a>
+            <a href="signin">Login</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to ChitterSync</h1>
+        <p>Your go-to platform for seamless communication and collaboration.</p>
+        <div style="margin-top: 20px;">
+            <a href="/signin" class="button">
+                <button class="button">Sign In</button>
+            </a>
+            <a href="/register" class="button">
+                <button class="button">Register</button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Steps Section -->
+        <div class="steps">
+            <div class="step">
+                <h2>Step 1: Sign Up</h2>
+                <p>Create an account to get started. It's quick and easy!</p>
+            </div>
+            <div class="step">
+                <h2>Step 2: Connect</h2>
+                <p>Find and connect with your friends, colleagues, or team members.</p>
+            </div>
+            <div class="step">
+                <h2>Step 3: Sync</h2>
+                <p>Start sharing updates, collaborating on projects, and staying in sync.</p>
+            </div>
+        </div>
+
+        <!-- Tag List Section -->
+        <div class="tag-list-container">
+            <div class="tag-list">
+                <div class="loop-slider" style="--duration:15951ms; --direction:normal;">
+                    <div class="inner">
+                        <div class="tag"><span>#</span> ChitterSync</div>
+                        <div class="tag"><span>#</span> Gia</div>
+                        <div class="tag"><span>#</span> CommunityForged</div>
+                        <div class="tag"><span>#</span> ChitterHaven</div>
+                        <div class="tag"><span>#</span> ThreadLine</div>
+                        <div class="tag"><span>#</span> VeloSync</div>
+                        <div class="tag"><span>#</span> PreCorded</div>
+                        <div class="tag"><span>#</span> EchoDrive</div>
+                        <div class="tag"><span>#</span> VibeLoop</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Why Choose Section -->
+    <section>
+        <h2>Why Choose ChitterSync?</h2>
+        <p>ChitterSync offers a unique blend of features designed to enhance your communication experience. With our user-friendly interface and powerful tools, you can easily manage your connections and stay updated.</p>
+        <p>Whether you're a student, professional, or just looking to connect with friends, ChitterSync has something for everyone.</p>
+        <p>Join us today and experience the future of communication!</p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Features</h2>
+        <ul>
+            <li style="--index: 0;"><strong>Real-time updates:</strong> Stay informed with instant notifications and updates.</li>
+            <li style="--index: 1;"><strong>Group chats:</strong> Collaborate with your team or friends in dedicated chat rooms.</li>
+            <li style="--index: 2;"><strong>File sharing:</strong> Share documents, images, and other files seamlessly.</li>
+            <li style="--index: 3;"><strong>Customizable profiles:</strong> Personalize your profile to reflect your identity.</li>
+            <li><strong>Privacy controls:</strong> Manage your privacy settings with ease.</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>2021-2025 Reach Studios &copy; All rights reserved.</p>
+    </footer>
+
+    <!-- Theme Menu -->
+    <div class="menu" id="theme-menu">
+        <h2>Select Theme</h2>
+        <select id="theme-selector">
+            <option value="default">Default</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+        </select>
+        <button id="apply-theme">Apply</button>
+    </div>
+
+    <script>
+        // JavaScript for nav bar visibility on scroll past header
+        const nav = document.querySelector('.chitter-nav');
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const headerBottom = header.offsetTop + header.offsetHeight;
+            if (window.scrollY > headerBottom) {
+            nav.classList.add('visible');
+            } else {
+            nav.classList.remove('visible');
+            }
+        });
+
+        const stickyNavbar = document.getElementById('sticky-navbar');
+        const mainHeader = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const headerBottom = mainHeader.offsetTop + mainHeader.offsetHeight;
+            if (window.scrollY > headerBottom) {
+                stickyNavbar.classList.remove('hidden');
+            } else {
+                stickyNavbar.classList.add('hidden');
+            }
+        });
+
+        // Simulate page loading
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            loader.classList.add('hidden'); // Add the hidden class to fade out the loader
+
+            // Remove the loader from the DOM after the fade-out transition
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500); // Match the duration of the CSS transition
+        });
+
+        // Get references to the menu and dropdown
+        const menu = document.getElementById('theme-menu');
+        const themeSelector = document.getElementById('theme-selector');
+        const applyButton = document.getElementById('apply-theme');
+
+        let tabCount = 0; // Track how many times the Tab key is pressed
+
+        // Open the menu when the Tab key is pressed
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Tab') {
+                event.preventDefault(); // Prevent default Tab behavior
+                tabCount++;
+
+                // Show the menu on the first Tab press
+                if (tabCount === 1) {
+                    menu.style.display = 'block'; // Show the menu
+                }
+
+                // Add the "Rainbow" option on the second Tab press
+                if (tabCount === 2) {
+                    // Check if the Rainbow option already exists
+                    if (!Array.from(themeSelector.options).some(option => option.value === 'rainbow')) {
+                        const rainbowOption = document.createElement('option');
+                        rainbowOption.value = 'rainbow';
+                        rainbowOption.textContent = 'Rainbow';
+                        themeSelector.appendChild(rainbowOption);
+                    }
+                }
+
+                // Add customization options for the Default theme on the third Tab press
+                if (tabCount === 3 && themeSelector.value === 'default') {
+                    // Check if the customization options already exist
+                    if (!document.getElementById('customization-options')) {
+                        const customizationDiv = document.createElement('div');
+                        customizationDiv.id = 'customization-options';
+                        customizationDiv.innerHTML = `
+                            <h3>Customize Default Theme</h3>
+                            <label for="animation-duration">Animation Duration (seconds):</label>
+                            <input type="number" id="animation-duration" value="15" min="1" max="60">
+                            <br>
+                            <label for="color1">Color 1:</label>
+                            <input type="color" id="color1" value="#0d1915">
+                            <br>
+                            <label for="color2">Color 2:</label>
+                            <input type="color" id="color2" value="#7fffd4">
+                            <br>
+                            <button id="apply-customization">Apply Customization</button>
+                        `;
+                        menu.appendChild(customizationDiv);
+
+                        // Add event listener for the Apply Customization button
+                        document.getElementById('apply-customization').addEventListener('click', () => {
+                            const duration = document.getElementById('animation-duration').value;
+                            const color1 = document.getElementById('color1').value;
+                            const color2 = document.getElementById('color2').value;
+
+                            // Update the Default theme animation with custom values
+                            const styleSheet = document.styleSheets[0];
+                            const keyframesRule = `
+                                @keyframes customBackgroundTransition {
+                                    0% { background-color: ${color1}; }
+                                    50% { background-color: ${color2}; }
+                                    100% { background-color: ${color1}; }
+                                }
+                            `;
+                            styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
+
+                            document.body.style.animation = `customBackgroundTransition ${duration}s ease infinite`;
+
+                            // Hide the customization options after applying
+                            customizationDiv.remove();
+                            tabCount = 0; // Reset tab count
+                        });
+                    }
+                }
+            }
+        });
+
+        // Remove customization options if "Default" is no longer selected
+        themeSelector.addEventListener('change', () => {
+            const customizationDiv = document.getElementById('customization-options');
+            if (themeSelector.value !== 'default' && customizationDiv) {
+                customizationDiv.remove(); // Remove customization options
+            }
+        });
+
+        // Close the menu when clicking outside of it
+        document.addEventListener('click', (event) => {
+            if (!menu.contains(event.target)) {
+                menu.style.display = 'none'; // Hide the menu
+                tabCount = 0; // Reset tab count
+            }
+        });
+
+        // Apply the selected theme
+        applyButton.addEventListener('click', () => {
+            const selectedTheme = themeSelector.value;
+
+            if (selectedTheme === 'default') {
+                document.body.style.animation = 'backgroundColorTransition 1800s ease infinite';
+            } else if (selectedTheme === 'dark') {
+                document.body.style.animation = 'none';
+                document.body.style.backgroundColor = 'rgb(13, 25, 21)';
+                document.body.style.color = 'var(--text-color-dark)';
+            } else if (selectedTheme === 'light') {
+                document.body.style.animation = 'none';
+                document.body.style.backgroundColor = 'aquamarine';
+                document.body.style.color = 'var(--text-color-light)';
+            } else if (selectedTheme === 'rainbow') {
+                document.body.style.animation = 'rainbowBackground 7s linear infinite';
+                document.body.style.color = 'white'; // Apply negative color
+            }
+
+            menu.style.display = 'none'; // Hide the menu after applying the theme
+            tabCount = 0; // Reset tab count
+        });
+
+        // Add a fade-out effect when navigating to another page
+        document.querySelectorAll('.page-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent immediate navigation
+                const href = link.getAttribute('href'); // Get the link's href
+                document.body.classList.add('fade-out'); // Add the fade-out class
+                setTimeout(() => {
+                    window.location.href = href; // Navigate to the next page after the transition
+                }, 500); // Match the duration of the CSS transition
+            });
+        });
+
+        // JavaScript for Animated Text
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedText = document.querySelector('.animated-text');
+            const phrases = [
+                'Collaborate seamlessly.',
+                'Stay connected.',
+                'Experience the future of communication.',
+            ];
+            let phraseIndex = 0;
+
+            function typeNextPhrase() {
+                animatedText.textContent = phrases[phraseIndex];
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            // Change the phrase every 4 seconds
+            setInterval(typeNextPhrase, 4000);
+            typeNextPhrase(); // Initialize with the first phrase
+        });
+    </script>
+</body>
+</html>

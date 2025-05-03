@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register/Login Process</title>
+<script src="regionbased.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* General reset and body styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Jost', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(40deg, #000000, #808080);
+        }
+
+        .main {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .signup label {
+            display: block;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 16px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="phone"], input[type="username"], input[type="name"] {
+            background: #fff;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background: #573b8a;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: #6d44b8;
+        }
+
+        .tos-agreement {
+            display: flex;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .tos-agreement a {
+            color: #dcdcdc; 
+            text-decoration: none;
+        }
+
+        .tos-agreement a:hover {
+            text-decoration: underline;
+        }
+
+        .tos-agreement label {
+            font-size: 0.8rem; 
+            color: #ddd;
+            margin-left: 10px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            text-align: center;
+            color: #ddd;
+        }
+
+        p a {
+            color: #dcdcdc; 
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .main {
+                padding: 20px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            input, button {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="signup">
+        <form id="signup-form" enctype="multipart/form-data" novalidate>
+            <h1>Sign Up</h1>
+            <label for="login-id">Login ID</label>
+            <input type="text" id="login-id" name="Login ID" placeholder="Login ID" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="Password" placeholder="Password" required autocomplete="new-password">
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" placeholder="Email" required autocomplete="email">
+            
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="Phone" placeholder="Phone Number" required>
+            
+            <label for="username">Username</label>
+            <input type="text" id="username" name="Username" placeholder="Username" required>
+            
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="Name" placeholder="Full Name" required>
+            
+            <div class="tos-agreement">
+                <label>
+                    <input type="checkbox" id="tos-agreement" name="ToS Agreement" required>
+                    I agree to the <a href="/support/forms/legal/tos.hmtl" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.
+                </label>
+            </div>
+            <input type="submit" name="Register" value="Continue">
+            <p>
+                By creating an account, you agree to our Terms of Service and Privacy Policy. 
+                You also consent to any of your content being used as examples by developers for users.
+            </p>
+            <p>Already have an account? <a href="signin.html">Sign in here</a></p>
+        </form>
+    </div>
+
+    <!-- Include the Signup JavaScript -->
+    <script src="/process Signup.js"></script>
+</body>
+</html>
